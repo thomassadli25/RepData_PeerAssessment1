@@ -15,10 +15,11 @@ hist(steps_by_day$steps, main = paste("Total Steps Each Day"), col="green",xlab=
 
 rmean <- mean(steps_by_day$steps)
 rmean
+[1] 10766.19
 
 rmedian <- median(steps_by_day$steps)
 rmedian
-
+[1] 10765
 ## What is the average daily activity pattern?
 steps_by_interval <- aggregate(steps ~ interval, data, mean)
 plot(steps_by_interval$interval,steps_by_interval$steps, type="l", xlab="Interval", ylab="Number of Steps",main="Average Number of Steps per Day by Interval")
@@ -26,11 +27,11 @@ plot(steps_by_interval$interval,steps_by_interval$steps, type="l", xlab="Interva
 
 max_interval <- steps_by_interval[which.max(steps_by_interval$steps),1]
 max_interval
-
+[1] 835
 ## Imputing missing values
 NATotal <- sum(!complete.cases(data))
 NATotal
-
+[1] 2304
 StepsAverage <- aggregate(steps ~ interval, data = data, FUN = mean)
 fillNA <- numeric()
 for (i in 1:nrow(data)) {
